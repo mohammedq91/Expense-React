@@ -1,0 +1,80 @@
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background-color: rgb(73, 175, 73)
+}
+
+h1, h4{
+  color: white ;
+  text-align: center ;
+}
+
+#form-box{
+  width: auto;
+  /* margin: 20px auto; */
+  padding-left: 95px; 
+  align-items: center;
+  /* position: absolute; */
+}
+
+label, input, select{
+  /* position:relative; */
+  margin-right: 20px;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+select, input, button{
+  text-indent:0.1rem;
+}
+
+.option{
+  text-indent:10px;
+}
+
+#button{
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+.table{
+  margin-top: 150px;
+  position: relative 200px;
+}
+
+/* .label-form{
+  display: flex;
+  padding:100px
+} */
+
+/* #payments{
+  display:inline-flex;
+} */
+
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: green;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+#payments, #item-name{
+  display: flex;
+  flex : row;
+}
+
+#date, #amount{
+  display: flex;
+} */
