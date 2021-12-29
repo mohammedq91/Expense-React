@@ -15,7 +15,9 @@ export default function Main(props){
 
   function handleSubmit(event){
     event.preventDefault();
-    console.log(props.data)
+    // console.log(props.data)
+    props.addExpense(props.data)
+  
   }
 
   return (

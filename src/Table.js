@@ -1,27 +1,62 @@
 import React from 'react'
 
 export default function Table(props){
-  console.log(props.expenses);
-  debugger;
-
+  // console.log(props.expense);
+  // debugger;
 
   // 1. Store object values into array
   // Expected outcome
   // 2. render array value into tr
+  const expenseList = props.expense
 
-  let expenseElements = JSON.parse(props.data)
-
-  let expenseItem = expenseElements.map(expense => {
+  let expenseItem = expenseList.map(expense => {
     return (<tr key = {expense.id}>
-              <td>expense.payment</td>
-              <td>expense.item</td>
-              <td>expense.date</td>
-              <td>expense.amount</td>
-              </tr>
+              <td>{expense.payment}</td>
+              <td>{expense.item}</td>
+              <td>{expense.date}</td>
+              <td>{expense.amount}</td>
+              <td id="delete-btn-cell">
+                <button id="delete-btn"></button>
+              </td>
+            </tr>
             )
   })
 
-  console.log(expenseItem)
+  // function deleteExpense(){
+
+  // }
+
+  return(
+    <div className="table">
+
+      <table>
+        <caption></caption>
+
+        <thead>
+          <tr>
+            <th>type</th>
+            <th>name</th>
+            <th>date</th>
+            <th>amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {expenseItem}
+        </tbody>
+
+        <tfoot>
+          <tr>
+          </tr>
+        </tfoot>
+
+      </table>
+
+    </div>
+  )
+}
+
+// console.log(expenseItem)
   // let tableRowArray =[]
 
   // for (let i=0; i > tableRowArray.length; i++){
@@ -62,33 +97,3 @@ export default function Table(props){
   // );
 
   // const rows = [newTableRow, secondTableRow]
-
-  return(
-    <div classname="table">
-
-      <table>
-        <caption></caption>
-
-        <thead>
-          <tr>
-            <th>type</th>
-            <th>name</th>
-            <th>date</th>
-            <th>amount</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {expenseItem}
-        </tbody>
-
-        <tfoot>
-          <tr>
-          </tr>
-        </tfoot>
-
-      </table>
-
-    </div>
-  )
-}
