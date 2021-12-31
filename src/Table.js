@@ -1,12 +1,9 @@
 import React from 'react'
 
 export default function Table(props){
-  // console.log(props.expense);
+  console.log(props.expense);
   // debugger;
 
-  // 1. Store object values into array
-  // Expected outcome
-  // 2. render array value into tr
   const expenseList = props.expense
 
   let expenseItem = expenseList.map(expense => {
@@ -16,15 +13,15 @@ export default function Table(props){
               <td>{expense.date}</td>
               <td>{expense.amount}</td>
               <td id="delete-btn-cell">
-                <button id="delete-btn"></button>
+                <button id="delete-btn">Remove</button>
               </td>
             </tr>
             )
   })
 
-  // function deleteExpense(){
+  function deleteExpense(){
 
-  // }
+  }
 
   return(
     <div className="table">

@@ -2,9 +2,6 @@ import React from 'react'
 
 export default function Main(props){
  
-// debugger;
-  // console.log(formData.amount)
-
   function handleChange(event){
     const {name, value} = event.target
     props.setFormData(prevFormData => ({
@@ -13,16 +10,9 @@ export default function Main(props){
     }))
   }
 
-  function handleSubmit(event){
-    event.preventDefault();
-    // console.log(props.data)
-    props.addExpense(props.data)
-  
-  }
-
   return (
     <div>
-        <form onSubmit={handleSubmit} id="form-box"> 
+        <form onSubmit={props.addExpense} id="form-box"> 
 
         <div>
           <label className="form-label" htmlFor ="payments"> Type: </label>
