@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header.js';
-import Main from './Main.js'
+import Form from './Form.js'
 import Table from './Table.js'
 
 export default function App(){
@@ -34,21 +34,23 @@ export default function App(){
     }
     setExpense(prevExpense => ([
       ...prevExpense, 
-      newExpense,
+      newExpense
   
     ]))
+
+    setFormData(formData)
+    console.log(formData)
     // if (addExpense){
     //   setFormData(() => formData)
     // }
     // resetExpense();
   }
 
-  function resetExpense(event){
-    this.setState({
-      expenseValues: [{}]
-    });
-    
-  };
+  // if(addExpense === true) {
+  //   resetExpense();
+  // }
+
+  
 
   // console.log(saveExpnse())
   // localStorage.clear();
@@ -65,7 +67,7 @@ export default function App(){
   return (
     <div>
       <Header/>
-      <Main data={formData} setFormData = {setFormData} addExpense={addExpense}/>
+      <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
       <Table expense={expense} />
     </div>
   );

@@ -19,9 +19,9 @@ export default function Table(props){
             )
   })
 
-  function deleteExpense(){
+  // function deleteExpense(){
 
-  }
+  // }
 
   return(
     <div className="table">

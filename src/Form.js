@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Main(props){
+export default function Form(props){
  
   function handleChange(event){
     const {name, value} = event.target
