@@ -8,19 +8,12 @@ export default function App(){
   const [formData, setFormData] = React.useState({
     payment: "",
     item: "",
+    amount: "",
+    location: "",
     date: "",
-    amount: ""
   })
 
   const [expense, setExpense] = React.useState([])
-
-  // function saveExpnse(formData){
-  //   localStorage.setItem("expnseArray", JSON.stringify({formData}) )
-  // }
-
-  // function getExpenseArray(){
-  //   return JSON.parse(localStorage.getItem("expenseArray")) || [];
-  // }
 
   function addExpense(event){
     event.preventDefault();
@@ -29,8 +22,9 @@ export default function App(){
       id: Math.random(),
       payment: formData.payment,
       item: formData.item,
-      date: formData.date,
-      amount: formData.amount
+      amount: formData.amount,
+      location: formData.location,
+      date: formData.date
     }
     setExpense(prevExpense => ([
       ...prevExpense, 
@@ -38,31 +32,22 @@ export default function App(){
   
     ]))
 
-    setFormData(formData)
-    console.log(formData)
-    // if (addExpense){
-    //   setFormData(() => formData)
-    // }
-    // resetExpense();
+    setFormData({
+      payment: "",
+      item: "",
+      amount: "",
+      date: "",
+      location: ""
+    })
   }
 
-  // if(addExpense === true) {
-  //   resetExpense();
-  // }
+  function saveExpnse(formData){
+    localStorage.setItem("expnseArray", JSON.stringify({formData}) )
+  }
 
-  
-
-  // console.log(saveExpnse())
-  // localStorage.clear();
-
-
-  // look up html form validation
-
-  // re-set form after submission
-
-  // add remove button along with each row
-
-  // remove row from table 
+  function getExpenseArray(){
+    return JSON.parse(localStorage.getItem("expenseArray")) || [];
+  }
 
   return (
     <div>

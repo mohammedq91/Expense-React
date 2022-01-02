@@ -10,18 +10,20 @@ export default function Table(props){
     return (<tr key = {expense.id}>
               <td>{expense.payment}</td>
               <td>{expense.item}</td>
-              <td>{expense.date}</td>
               <td>{expense.amount}</td>
+              <td>{expense.location}</td>
+              <td>{expense.date}</td>
+              
               <td id="delete-btn-cell">
-                <button id="delete-btn">Remove</button>
+                <button id="delete-btn" onClick={deleteExpense}>Remove</button>
               </td>
             </tr>
             )
   })
 
-  // function deleteExpense(){
-
-  // }
+  function deleteExpense(e){
+    e.target.parentElement.parentElement.remove();
+  }
 
   return(
     <div className="table">

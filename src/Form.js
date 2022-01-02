@@ -20,7 +20,9 @@ export default function Form(props){
             id="form-payment"
             value={props.data.payment}
             onChange={handleChange}
-            name="payment">
+            name="payment"
+            required>
+
 
             <option className="option" value ="">-- Choose --</option>
             <option className="option" value ="cash">Cash</option>
@@ -39,17 +41,8 @@ export default function Form(props){
             value={props.data.item}
             placeholder="What did you spend on?"
             onChange={handleChange}
-            name="item"/>
-        </div>
-
-        <div>
-          <label className="form-label" htmlFor ="date"> Date: </label>
-          <input 
-            type = "date" 
-            id = "form-date"
-            value={props.data.date}
-            onChange={handleChange}
-            name="date"/>
+            name="item"
+            required/>
         </div>
 
         <div>
@@ -60,7 +53,33 @@ export default function Form(props){
             value={props.data.amount}
             placeholder ='How much in $ 0.01 ?'
             onChange={handleChange}
-            name="amount"/>
+            name="amount"
+            required/>
+        </div>
+
+        <div>
+          <label className ="form-label" htmlFor ="location">Location: </label>
+          <input 
+            type = "text" 
+            id = "form-location"
+            value={props.data.location}
+            placeholder ='Where was the item bought at?'
+            onChange={handleChange}
+            name="location"
+            required/>
+
+
+        </div>
+
+        <div>
+          <label className="form-label" htmlFor ="date"> Date: </label>
+          <input 
+            type = "date" 
+            id = "form-date"
+            value={props.data.date}
+            onChange={handleChange}
+            name="date"
+            required/>
         </div>
 
         <button id="button">Add a new expense</button>
