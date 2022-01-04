@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Table(props){
-  console.log(props.expense);
+  // console.log(props.expense);
   // debugger;
 
   const expenseList = props.expense

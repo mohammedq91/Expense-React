@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from './Header.js';
 import Form from './Form.js'
 import Table from './Table.js'
@@ -15,6 +15,22 @@ export default function App(){
 
   const [expense, setExpense] = React.useState([])
 
+  
+  useEffect(() => {
+    if (localStorage.getItem("expenseArray")){
+      setExpense(JSON.parse(localStorage.getItem("expenseArray")) ) 
+    }
+  }, [])
+
+  useEffect(() => {
+      localStorage.setItem("expnseArray", JSON.stringify(expense))
+      
+      // let getExpense = JSON.parse(localStorage.getItem("expenseArray")) || [];
+    }, [expense])
+
+
+    // console.log(getExpense)
+
   function addExpense(event){
     event.preventDefault();
 
@@ -25,11 +41,10 @@ export default function App(){
       amount: formData.amount,
       location: formData.location,
       date: formData.date
-    }
+    };
     setExpense(prevExpense => ([
       ...prevExpense, 
       newExpense
-  
     ]))
 
     setFormData({
@@ -40,14 +55,18 @@ export default function App(){
       location: ""
     })
   }
+    // localStorage.clear();
 
-  function saveExpnse(formData){
-    localStorage.setItem("expnseArray", JSON.stringify({formData}) )
-  }
+    // function saveExpnse(expense){
+    //   localStorage.setItem("expnseArray", JSON.stringify(expense))
+    // }
 
-  function getExpenseArray(){
-    return JSON.parse(localStorage.getItem("expenseArray")) || [];
-  }
+  // function getExpenseArray(){
+  //   return JSON.parse(localStorage.getItem("expenseArray")) || [];
+  // }
+
+  // let x = getExpenseArray();
+  // console.log(x)
 
   return (
     <div>
