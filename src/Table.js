@@ -15,15 +15,15 @@ export default function Table(props){
               <td>{expense.date}</td>
               
               <td id="delete-btn-cell">
-                <button id="delete-btn" onClick={deleteExpense}>Remove</button>
+                <button id="delete-btn" onClick={props.deleteExpense}>Remove</button>
               </td>
             </tr>
             )
   })
 
-  function deleteExpense(e){
-    e.target.parentElement.parentElement.remove();
-  }
+  // function deleteExpense(e){
+  //   e.target.parentElement.parentElement.remove();
+  // }
 
   return(
     <div className="table">

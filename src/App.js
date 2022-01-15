@@ -15,21 +15,16 @@ export default function App(){
 
   const [expense, setExpense] = React.useState([])
 
-  
+  useEffect(() => {
+    localStorage.setItem("expenseArray", JSON.stringify(expense))
+    // let getExpense = JSON.parse(localStorage.getItem("expenseArray")) || [];
+  }, [expense])
+
   useEffect(() => {
     if (localStorage.getItem("expenseArray")){
       setExpense(JSON.parse(localStorage.getItem("expenseArray")) ) 
     }
   }, [])
-
-  useEffect(() => {
-      localStorage.setItem("expnseArray", JSON.stringify(expense))
-      
-      // let getExpense = JSON.parse(localStorage.getItem("expenseArray")) || [];
-    }, [expense])
-
-
-    // console.log(getExpense)
 
   function addExpense(event){
     event.preventDefault();
@@ -55,7 +50,29 @@ export default function App(){
       location: ""
     })
   }
-    // localStorage.clear();
+
+  function deleteExpense(expense){
+    // const localStorageExpenseArray = JSON.parse(localStorage.getItem("expenseArray"))
+
+    // console.log(localStorageExpenseArray)
+
+    const removeExpense = expense.filter(expenseItem => expenseItem.id !== id)
+    setExpense(removeExpense)
+
+
+    // setExpense(prevExpense => ([
+    //   ...prevExpense,
+    //   newExpense.id !== id
+    // ]))
+
+  }
+
+  // 1. create function delete expense 
+  // 2. pass the function to Table component 
+  // 3. Write code inside delete expense function to update state.
+
+  // localStorage.clear();
+
 
     // function saveExpnse(expense){
     //   localStorage.setItem("expnseArray", JSON.stringify(expense))
@@ -72,7 +89,7 @@ export default function App(){
     <div>
       <Header/>
       <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
-      <Table expense={expense} />
+      <Table expense={expense} deleteExpense={deleteExpense}/>
     </div>
   );
 }
