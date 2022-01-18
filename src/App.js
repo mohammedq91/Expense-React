@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import Header from './Header.js';
 import Form from './Form.js'
 import Table from './Table.js'
 
@@ -16,15 +15,14 @@ export default function App(){
   const [expense, setExpense] = React.useState([])
 
   useEffect(() => {
-    localStorage.setItem("expenseArray", JSON.stringify(expense))
-    // let getExpense = JSON.parse(localStorage.getItem("expenseArray")) || [];
-  }, [expense])
-
-  useEffect(() => {
     if (localStorage.getItem("expenseArray")){
       setExpense(JSON.parse(localStorage.getItem("expenseArray")) ) 
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("expenseArray", JSON.stringify(expense))
+  }, [expense])
 
   function addExpense(event){
     event.preventDefault();
@@ -51,43 +49,15 @@ export default function App(){
     })
   }
 
-  function deleteExpense(expense){
-    // const localStorageExpenseArray = JSON.parse(localStorage.getItem("expenseArray"))
-
-    // console.log(localStorageExpenseArray)
-
-    const removeExpense = expense.filter(expenseItem => expenseItem.id !== id)
+  function deleteExpense(expenseToBeDeleted){
+    debugger
+    const removeExpense = expense.filter(expenseItem => expenseItem.id !== expenseToBeDeleted.id)
     setExpense(removeExpense)
-
-
-    // setExpense(prevExpense => ([
-    //   ...prevExpense,
-    //   newExpense.id !== id
-    // ]))
-
   }
-
-  // 1. create function delete expense 
-  // 2. pass the function to Table component 
-  // 3. Write code inside delete expense function to update state.
-
-  // localStorage.clear();
-
-
-    // function saveExpnse(expense){
-    //   localStorage.setItem("expnseArray", JSON.stringify(expense))
-    // }
-
-  // function getExpenseArray(){
-  //   return JSON.parse(localStorage.getItem("expenseArray")) || [];
-  // }
-
-  // let x = getExpenseArray();
-  // console.log(x)
-
   return (
     <div>
-      <Header/>
+      <h1 className="header">Simple Expense Manager Project</h1>
+      <h4>Add A New Item</h4>
       <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
       <Table expense={expense} deleteExpense={deleteExpense}/>
     </div>
