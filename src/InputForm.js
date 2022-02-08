@@ -1,6 +1,8 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
-export default function Form(props){
+export default function InputForm(props){
  
   function handleChange(event){
     const {name, value} = event.target
@@ -12,7 +14,26 @@ export default function Form(props){
 
   return (
     <div>
-        <form onSubmit={props.addExpense} id="form-box"> 
+        <Form onSubmit={props.addExpense} id="form-box"> 
+
+        <Form.group>
+          <Form.label className="form-label" htmlFor ="payments"> Type: </Form.label>
+          <select 
+            id="form-payment"
+            value={props.data.payment}
+            onChange={handleChange}
+            name="payment"
+            required>
+
+
+            <option className="option" value ="">-- Choose --</option>
+            <option className="option" value ="cash">Cash</option>
+            <option className="option" value ="credit">Credit</option>
+            <option className="option" value ="debit">Debit</option>
+            <option className="option" value ="crypto">Crypto</option>
+            <option className="option" value ="other">Other</option>
+          </select>
+        </Form.group>
 
         <div>
           <label className="form-label" htmlFor ="payments"> Type: </label>
@@ -82,9 +103,12 @@ export default function Form(props){
             required/>
         </div>
 
-        <button id="button">Add a new expense</button>
+        {/* <button id="button">Add a new expense</button> */}
+        <Button type="submit" size="sm" active variant = "primary">Add New Expense</Button>
+        
+       
 
-      </form>
+      </Form>
     </div>
     
   )

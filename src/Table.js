@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export default function Table(props){
 
@@ -13,7 +15,9 @@ export default function Table(props){
               <td>{expense.date}</td>
               
               <td id="delete-btn-cell">
-                <button id="delete-btn" onClick={() => props.deleteExpense(expense)}>Remove</button>
+                {/* <button id="delete-btn" onClick={() => props.deleteExpense(expense)}>Remove</button> */}
+                <Button id="delete-btn" onClick={() => props.deleteExpense(expense)}>Remove</Button>
+
               </td>
             </tr>
             )
@@ -21,7 +25,7 @@ export default function Table(props){
   return(
     <div className="table">
 
-      <table>
+      <table striped bordered hover>
         <caption></caption>
 
         <thead>
@@ -35,6 +39,7 @@ export default function Table(props){
 
         <tbody>
           {expenseItem}
+          {/* <h1> <Badge bg ="secondary">New</Badge> </h1> */}
         </tbody>
 
         <tfoot>

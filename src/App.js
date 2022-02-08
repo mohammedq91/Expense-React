@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import Form from './Form.js'
+import InputForm from './InputForm.js'
 import Table from './Table.js'
 
 export default function App(){
@@ -50,7 +50,7 @@ export default function App(){
   }
 
   function deleteExpense(expenseToBeDeleted){
-    debugger
+    // debugger
     const removeExpense = expense.filter(expenseItem => expenseItem.id !== expenseToBeDeleted.id)
     setExpense(removeExpense)
   }
@@ -58,7 +58,7 @@ export default function App(){
     <div>
       <h1 className="header">Simple Expense Manager Project</h1>
       <h4>Add A New Item</h4>
-      <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
+      <InputForm data={formData} setFormData = {setFormData} addExpense={addExpense}/>
       <Table expense={expense} deleteExpense={deleteExpense}/>
     </div>
   );
