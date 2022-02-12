@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import InputForm from './InputForm.js'
+import Form from './InputForm.js'
 import Table from './Table.js'
 
 export default function App(){
@@ -58,7 +58,7 @@ export default function App(){
     <div>
       <h1 className="header">Simple Expense Manager Project</h1>
       <h4>Add A New Item</h4>
-      <InputForm data={formData} setFormData = {setFormData} addExpense={addExpense}/>
+      <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
       <Table expense={expense} deleteExpense={deleteExpense}/>
     </div>
   );
