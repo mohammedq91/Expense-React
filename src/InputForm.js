@@ -17,7 +17,7 @@ export default function InputForm(props){
   return (
     <Form onSubmit={props.addExpense} id="form-box"> 
       <Row>
-        <Form.Group as {Col}>
+        <Form.Group as = {Col}>
           <Form.Label className="form-label" htmlFor ="payments"> Type: </Form.Label>
           <select 
             id="form-payment"
@@ -35,7 +35,7 @@ export default function InputForm(props){
           </select>
         </Form.Group>
       
-        <Form.Group as {Col}>
+        <Form.Group as = {Col}>
           <Form.Label className="form-label" htmlFor ="item-name">Item: </Form.Label>
           <Form.Control
             type = "text" 
@@ -50,7 +50,7 @@ export default function InputForm(props){
       </Row>
 
       <Row>
-        <Form.Group as {Col}>
+        <Form.Group as = {Col}>
           <Form.Label className="form-label" htmlFor ="amount">Amount: </Form.Label>
           <Form.Control 
             type = "number" step = "0.01"
@@ -63,7 +63,7 @@ export default function InputForm(props){
           />
         </Form.Group>
 
-        <Form.Group as {Col}>
+        <Form.Group as = {Col}>
           <Form.Label className ="form-label" htmlFor ="location">Location: </Form.Label>
           <Form.Control 
             type = "text" 
@@ -76,7 +76,7 @@ export default function InputForm(props){
           />
         </Form.Group>
 
-        <Form.Group as {Col}>
+        <Form.Group as = {Col}>
           <Form.Label className="form-label" htmlFor ="date"> Date: </Form.Label>
           <Form.Control 
             type = "date" 
