@@ -1,13 +1,16 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 // import ToggleButton from 'react-bootstrap/ToggleButton'
 
-export default function Table(props){
+export default function tableExpense(props){
 
   const expenseList = props.expense
 
   let expenseItem = expenseList.map(expense => {
+    // debugger
     return (<tr key = {expense.id}>
+              <td>{expense.number}</td>
               <td>{expense.payment}</td>
               <td>{expense.item}</td>
               <td>{expense.amount}</td>
@@ -23,30 +26,26 @@ export default function Table(props){
             )
   })
   return(
-    <div className="table">
-
-      <table striped bordered hover>
+      <Table striped bordered hover size="sm">
         <caption></caption>
-
         <thead>
           <tr>
-            <th>type</th>
-            <th>name</th>
-            <th>date</th>
-            <th>amount</th>
+            <th>#</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Location</th>
+            <th>Date</th>
           </tr>
         </thead>
-
         <tbody>
           {expenseItem}
           {/* <h1> <Badge bg ="secondary">New</Badge> </h1> */}
         </tbody>
-
         <tfoot>
           <tr>
           </tr>
         </tfoot>
-      </table>
-    </div>
+      </Table>
   )
 }

@@ -87,9 +87,11 @@ export default function InputForm(props){
             required/>
         </Form.Group>
       </Row> 
-
-      <Button type="submit" size="sm" active variant = "primary">Add New Expense</Button>
-        
+  
+      <div className="d-grid gap-2">
+        <Button type="submit" variant="primary" size="sm" >Add New Expense</Button>
+      </div>
+      
     </Form>
   )
 }

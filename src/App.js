@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react'
 import Form from './InputForm.js'
-import Table from './Table.js'
+import Table from './tableExpense'
 
 export default function App(){
 
+  debugger
+
   const [formData, setFormData] = React.useState({
+    // number: "",
     payment: "",
     item: "",
     amount: "",
@@ -27,8 +30,11 @@ export default function App(){
   function addExpense(event){
     event.preventDefault();
 
+    let expenseNumber = 0;
+
     const newExpense = { 
       id: Math.random(),
+      number: expenseNumber += 1,
       payment: formData.payment,
       item: formData.item,
       amount: formData.amount,
