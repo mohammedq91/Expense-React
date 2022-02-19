@@ -4,7 +4,7 @@ import Table from './tableExpense'
 
 export default function App(){
 
-  debugger
+  // debugger
 
   const [formData, setFormData] = React.useState({
     // number: "",
@@ -34,7 +34,6 @@ export default function App(){
 
     const newExpense = { 
       id: Math.random(),
-      number: expenseNumber += 1,
       payment: formData.payment,
       item: formData.item,
       amount: formData.amount,

@@ -7,10 +7,12 @@ export default function tableExpense(props){
 
   const expenseList = props.expense
 
+  let expenseRowNumber = 0;
+
   let expenseItem = expenseList.map(expense => {
-    // debugger
+    expenseRowNumber += 1;
     return (<tr key = {expense.id}>
-              <td>{expense.number}</td>
+              <td>{expenseRowNumber}</td>
               <td>{expense.payment}</td>
               <td>{expense.item}</td>
               <td>{expense.amount}</td>
