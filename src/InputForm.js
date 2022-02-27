@@ -1,28 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default function InputForm(props){
- 
-  function handleChange(event){
-    const {name, value} = event.target
-    props.setFormData(prevFormData => ({
-      ...prevFormData, 
-      [name]: value
-    }))
+export default function InputForm({setExpenseList}){
+  const [payment, setPayment] = useState('')
+  const [item, setItem] = useState('')
+  const [amount, setAmount] = useState(0)
+  const [location, setLocation] = useState('')
+  const [date, setDate] = useState('')
+
+  function addExpense(event){
+    event.preventDefault();
+    const newExpense = { 
+      id: Math.random(),
+
+      payment: payment,
+      item: item,
+      amount: amount,
+      location: location,
+      date: date
+    };
+    setExpenseList(prevExpense => [...prevExpense, newExpense])
+
+    setPayment('');
+    setAmount(0);
+    setItem('');
+    setDate('');
+    setLocation('');
   }
 
   return (
-    <Form onSubmit={props.addExpense} id="form-box"> 
+    <Form onSubmit={addExpense} id="form-box"> 
       <Row>
         <Form.Group as={Col}>
           <Form.Label className="form-label" htmlFor ="payments"> Type: </Form.Label>
           <select 
             id="form-payment"
-            value={props.data.payment}
-            onChange={handleChange}
+            value={payment}
+            onChange={(e) => setPayment(e.target.value)}
             name="payment"
             required
           >
@@ -40,9 +57,9 @@ export default function InputForm(props){
           <Form.Control
             type = "text" 
             id="form-item"
-            value={props.data.item}
+            value={item}
             placeholder="What did you spend on?"
-            onChange={handleChange}
+            onChange={(e) => setItem(e.target.value)}
             name="item"
             required
           />
@@ -55,9 +72,9 @@ export default function InputForm(props){
           <Form.Control 
             type = "number" step = "0.01"
             id="amount"
-            value={props.data.amount}
+            value={amount}
             placeholder ='How much in $ 0.01 ?'
-            onChange={handleChange}
+            onChange={(e) => setAmount(e.target.value)}
             name="amount"
             required
           />
@@ -68,9 +85,9 @@ export default function InputForm(props){
           <Form.Control 
             type = "text" 
             id = "form-location"
-            value={props.data.location}
+            value={location}
             placeholder ='Where was the item bought at?'
-            onChange={handleChange}
+            onChange={(e) => setLocation(e.target.value)}
             name="location"
             required
           />
@@ -81,8 +98,8 @@ export default function InputForm(props){
           <Form.Control 
             type = "date" 
             id = "form-date"
-            value={props.data.date}
-            onChange={handleChange}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             name="date"
             required/>
         </Form.Group>

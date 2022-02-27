@@ -1,70 +1,37 @@
-import React, {useEffect} from 'react'
-import Form from './InputForm.js'
-import Table from './tableExpense'
+import React, {useEffect, useState} from 'react'
+import InputForm from './InputForm.js'
+import TableExpense  from './TableExpense'
 
 export default function App(){
-
-  // debugger
-
-  const [formData, setFormData] = React.useState({
-    // number: "",
-    payment: "",
-    item: "",
-    amount: "",
-    location: "",
-    date: "",
-  })
-
-  const [expense, setExpense] = React.useState([])
+  const [expenseList, setExpenseList] = useState([])
 
   useEffect(() => {
     if (localStorage.getItem("expenseArray")){
-      setExpense(JSON.parse(localStorage.getItem("expenseArray")) ) 
+      setExpenseList(JSON.parse(localStorage.getItem("expenseArray")) ) 
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("expenseArray", JSON.stringify(expense))
-  }, [expense])
-
-  function addExpense(event){
-    event.preventDefault();
-
-    let expenseNumber = 0;
-
-    const newExpense = { 
-      id: Math.random(),
-      payment: formData.payment,
-      item: formData.item,
-      amount: formData.amount,
-      location: formData.location,
-      date: formData.date
-    };
-    setExpense(prevExpense => ([
-      ...prevExpense, 
-      newExpense
-    ]))
-
-    setFormData({
-      payment: "",
-      item: "",
-      amount: "",
-      date: "",
-      location: ""
-    })
-  }
+    localStorage.setItem("expenseArray", JSON.stringify(expenseList))
+  }, [expenseList])
 
   function deleteExpense(expenseToBeDeleted){
     // debugger
-    const removeExpense = expense.filter(expenseItem => expenseItem.id !== expenseToBeDeleted.id)
-    setExpense(removeExpense)
+    const removeExpense = expenseList.filter(expenseItem => expenseItem.id !== expenseToBeDeleted.id)
+    setExpenseList(removeExpense)
   }
   return (
     <div>
       <h1 className="header">Simple Expense Manager Project</h1>
       <h4>Add A New Item</h4>
-      <Form data={formData} setFormData = {setFormData} addExpense={addExpense}/>
-      <Table expense={expense} deleteExpense={deleteExpense}/>
+      <InputForm
+        setExpenseList={setExpenseList}
+       />
+      <TableExpense  
+        expenseList={expenseList} 
+        setExpenseList={setExpenseList}
+        deleteExpense={deleteExpense}
+      />
     </div>
   );
 }
